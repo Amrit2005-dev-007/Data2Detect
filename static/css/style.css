@@ -1,0 +1,62 @@
+/* ── Custom Styles for Data2Detect ───────────────────────────── */
+
+/* Body baseline */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #f8f9fa;
+}
+
+/* Push footer to bottom */
+.container.my-4 {
+    flex: 1;
+}
+
+/* ── Traffic Signal ─────────────────────────────────────────── */
+.traffic-signal {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    background: #2c2c2c;
+    border-radius: 18px;
+    padding: 18px 22px;
+    width: 90px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.signal-light {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin: 6px 0;
+    opacity: 0.15;
+    transition: opacity 0.3s, box-shadow 0.3s;
+}
+
+/* Base colors (dimmed) */
+.signal-light.red    { background-color: #e74c3c; }
+.signal-light.yellow { background-color: #f1c40f; }
+.signal-light.green  { background-color: #2ecc71; }
+
+/* Active (lit up) */
+.signal-light.active {
+    opacity: 1;
+}
+.signal-light.red.active    { box-shadow: 0 0 22px #e74c3c; }
+.signal-light.yellow.active { box-shadow: 0 0 22px #f1c40f; }
+.signal-light.green.active  { box-shadow: 0 0 22px #2ecc71; }
+
+/* ── Cards ──────────────────────────────────────────────────── */
+.card {
+    border-radius: 12px;
+}
+
+.card-header {
+    border-radius: 12px 12px 0 0 !important;
+}
+
+/* ── Table tweaks ───────────────────────────────────────────── */
+.table {
+    margin-bottom: 0;
+}

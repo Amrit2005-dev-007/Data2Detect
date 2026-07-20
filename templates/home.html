@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block title %}Data2Detect — Home{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="text-center py-5">
+    <h1 class="display-4 fw-bold">🚦 Traffic Congestion Prediction</h1>
+    <p class="lead text-muted mt-3 mb-4">
+        A deep learning system that predicts traffic congestion levels<br>
+        using a Keras neural network trained on real traffic data.
+    </p>
+    <div class="d-flex justify-content-center gap-3">
+        <a href="/dashboard" class="btn btn-outline-primary btn-lg">📊 Dashboard</a>
+        <a href="/predict" class="btn btn-primary btn-lg">🔮 Predict Now</a>
+    </div>
+</div>
+
+<hr>
+
+<!-- Feature Cards -->
+<div class="row g-4 mt-2 mb-5">
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm border-0">
+            <div class="card-body text-center">
+                <h1 class="mb-3">🧠</h1>
+                <h5 class="card-title">Deep Learning Model</h5>
+                <p class="card-text text-muted">
+                    Keras Sequential neural network trained to classify traffic into
+                    Low, Normal, High, and Heavy congestion levels.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm border-0">
+            <div class="card-body text-center">
+                <h1 class="mb-3">📊</h1>
+                <h5 class="card-title">Visual Dashboard</h5>
+                <p class="card-text text-muted">
+                    Explore the dataset with correlation heatmaps, distribution charts,
+                    and vehicle count analysis built with Matplotlib & Seaborn.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm border-0">
+            <div class="card-body text-center">
+                <h1 class="mb-3">🚦</h1>
+                <h5 class="card-title">Traffic Signal Output</h5>
+                <p class="card-text text-muted">
+                    Get instant predictions displayed as a visual traffic signal —
+                    Green for Low, Yellow for Normal, Red for High/Heavy.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tech Stack -->
+<div class="text-center mb-5">
+    <h5 class="text-muted mb-3">Built With</h5>
+    <span class="badge bg-secondary fs-6 me-1">Python</span>
+    <span class="badge bg-secondary fs-6 me-1">Flask</span>
+    <span class="badge bg-secondary fs-6 me-1">TensorFlow / Keras</span>
+    <span class="badge bg-secondary fs-6 me-1">Pandas</span>
+    <span class="badge bg-secondary fs-6 me-1">Scikit-learn</span>
+    <span class="badge bg-secondary fs-6 me-1">Matplotlib</span>
+    <span class="badge bg-secondary fs-6 me-1">Seaborn</span>
+    <span class="badge bg-secondary fs-6 me-1">Bootstrap 5</span>
+</div>
+{% endblock %}

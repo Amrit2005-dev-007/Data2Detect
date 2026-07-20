@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% block title %}Data2Detect — Dashboard{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">📊 Data Dashboard</h2>
+
+{% if error %}
+    <div class="alert alert-warning">{{ error }}</div>
+{% else %}
+
+    <!-- Dataset Shape & Missing Values -->
+    <div class="row g-4 mb-4">
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-body text-center">
+                    <h6 class="text-muted">Rows</h6>
+                    <h2 class="fw-bold text-primary">{{ shape[0] }}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-body text-center">
+                    <h6 class="text-muted">Columns</h6>
+                    <h2 class="fw-bold text-primary">{{ shape[1] }}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-body text-center">
+                    <h6 class="text-muted">Missing Values</h6>
+                    <h2 class="fw-bold text-{{ 'success' if missing.values()|sum == 0 else 'danger' }}">
+                        {{ missing.values()|sum }}
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Column Info Table -->
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-header bg-dark text-white">Column Details</div>
+        <div class="card-body p-0">
+            <table class="table table-sm table-hover mb-0">
+                <thead class="table-light">
+                    <tr><th>Column</th><th>Data Type</th><th>Missing</th></tr>
+                </thead>
+                <tbody>
+                    {% for col, dtype in dtypes.items() %}
+                    <tr>
+                        <td>{{ col }}</td>
+                        <td><code>{{ dtype }}</code></td>
+                        <td>{{ missing[col] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Dataset Preview -->
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-header bg-dark text-white">Dataset Preview (First 10 Rows)</div>
+        <div class="card-body table-responsive p-0">
+            {{ preview | safe }}
+        </div>
+    </div>
+
+    <!-- Visualization Plots -->
+    <h4 class="mt-5 mb-3">📈 Visualizations</h4>
+    <p class="text-muted mb-4">
+        These plots are generated during model training by <code>train.py</code>.
+        Run training first to generate them.
+    </p>
+
+    {% if plots.correlation %}
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-header bg-dark text-white">Correlation Heatmap</div>
+        <div class="card-body text-center">
+            <img src="{{ url_for('static', filename='plots/correlation_heatmap.png') }}"
+                 class="img-fluid rounded" alt="Correlation Heatmap">
+        </div>
+    </div>
+    {% endif %}
+
+    {% if plots.distribution %}
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-header bg-dark text-white">Traffic Situation Distribution</div>
+        <div class="card-body text-center">
+            <img src="{{ url_for('static', filename='plots/congestion_distribution.png') }}"
+                 class="img-fluid rounded" alt="Congestion Distribution">
+        </div>
+    </div>
+    {% endif %}
+
+    {% if plots.vehicle %}
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-header bg-dark text-white">Vehicle Count Distribution</div>
+        <div class="card-body text-center">
+            <img src="{{ url_for('static', filename='plots/vehicle_counts.png') }}"
+                 class="img-fluid rounded" alt="Vehicle Counts">
+        </div>
+    </div>
+    {% endif %}
+
+    {% if not plots.correlation and not plots.distribution and not plots.vehicle %}
+    <div class="alert alert-info">
+        No plots found. Run <code>python train.py</code> to generate visualizations.
+    </div>
+    {% endif %}
+
+{% endif %}
+{% endblock %}
