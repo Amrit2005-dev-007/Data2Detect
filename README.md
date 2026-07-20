@@ -51,15 +51,14 @@ python train.py        # trains the model, saves artifacts, generates plots
 python app.py          # starts the flask app on localhost:5000
 ```
 
-Training takes about 10 seconds on CPU. Model gets ~99% accuracy on this dataset since the features are pretty clean.
+Training completed successfully on the traffic dataset. The model achieved approximately **91.47% test accuracy** and is used by the Flask application for real-time traffic congestion prediction.
 
 ---
 
-## Screenshots
 
-_Will add these later_
 
----
+
+
 
 ## Tech stack
 
